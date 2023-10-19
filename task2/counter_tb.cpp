@@ -1,6 +1,7 @@
 #include "Vcounter.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
+#include "vbuddy.cpp"
 
 int main(int argc, char **argv, char **env) {
     int i;
@@ -14,6 +15,10 @@ int main(int argc, char **argv, char **env) {
     Verilated::traceEverOn(true);
     top->trace (tfp,99);
     tfp->open("counter.vcd");
+
+    //init vbuddy
+    if(vbdOpen()!=1) return -1;
+    vbdHeader("Lab 1: Counter");
 
     //init simulation inputs
     top->clk = 1;
@@ -29,6 +34,14 @@ int main(int argc, char **argv, char **env) {
             top->eval();
         }
 
+        //Send values out to vbuddy
+        vbdHex(4, (int(top->count) >> 16) & 0xF);
+        vbdHex(4, (int(top->count) >> 8) & 0xF);
+        vbdHex(4, (int(top->count) >> 4) & 0xF);
+        vbdHex(4, (int(top->count)) & 0xF);
+        vbdCycle(i+1);
+
+
         top->rst = (i<2) | (i==23);
         top->en = (i>4);
         if (i >= 14 && i < 17) {
@@ -36,6 +49,8 @@ int main(int argc, char **argv, char **env) {
         }
         if (Verilated::gotFinish()) exit(0);
     }
+
+    vbdClose();
     tfp->close();
     exit(0);
 }
