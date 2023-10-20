@@ -15,10 +15,9 @@ int main(int argc, char **argv, char **env) {
     Verilated::traceEverOn(true);
     top->trace (tfp,99);
     tfp->open("counter.vcd");
+
     //init vbuddy
-    if (vbdOpen()!=1) {
-        return(-1);
-    }
+    if (vbdOpen()!=1) return(-1);
     vbdHeader("Lab 1: Counter");
 
     //init simulation inputs
