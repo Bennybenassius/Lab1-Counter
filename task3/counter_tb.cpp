@@ -23,7 +23,9 @@ int main(int argc, char **argv, char **env) {
     //init simulation inputs
     top->clk = 1;
     top->rst = 1;
-    top->en = 0;
+    top->ld = vbdFlag();
+    vbdSetMode(1);
+
 
     for (i=0; i<300; i++) {
 
@@ -42,11 +44,10 @@ int main(int argc, char **argv, char **env) {
         vbdCycle(i+1);
         //end vbuddy
 
-        top->rst = (i<2) | (i==22);
-        top->en = (i>4);
-        if (i >= 14 && i < 17) {
-            top->en = 0;
-        }
+        top->rst = (i<2);
+        top->ld = vbdFlag();
+        if (top->ld) top->v = vbdValue();
+
         if (Verilated::gotFinish()) exit(0);
     }
 
