@@ -193,7 +193,6 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->en = VL_RAND_RESET_I(1);
-    vlSelf->v = VL_RAND_RESET_I(8);
     vlSelf->bcd = VL_RAND_RESET_I(12);
     vlSelf->top__DOT__count = VL_RAND_RESET_I(8);
     vlSelf->top__DOT__myDecoder__DOT__result = VL_RAND_RESET_I(20);

@@ -5,7 +5,7 @@ module top #(
   input  logic             clk,      // clock 
   input  logic             rst,      // reset 
   input  logic             en,       // enable
-  input  logic [WIDTH-1:0] v,        // value to preload
+  // input  logic [WIDTH-1:0] v,        // value to preload
   output logic [11:0]      bcd       // count output
 );
 

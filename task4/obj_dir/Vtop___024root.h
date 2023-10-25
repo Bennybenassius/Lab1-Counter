@@ -16,7 +16,6 @@ class Vtop___024root final : public VerilatedModule {
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
     VL_IN8(en,0,0);
-    VL_IN8(v,7,0);
     CData/*7:0*/ top__DOT__count;
     CData/*0:0*/ __Vclklast__TOP__clk;
     VL_OUT16(bcd,11,0);

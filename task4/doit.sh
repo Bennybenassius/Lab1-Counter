@@ -1,5 +1,5 @@
 rm -rf obj_dir
-rm -f counter.vcd
+rm -f top.vcd
 
 verilator -Wall --cc --trace top.sv --exe top_tb.cpp
 
