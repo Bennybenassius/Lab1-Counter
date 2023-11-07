@@ -36,20 +36,16 @@ int main(int argc, char **argv, char **env) {
         }
 
         // ++++ Send count value to Vbuddy
-
-        //using hex display
+        //using hex display to display the now decoded BCD values
         vbdHex(4, (int(top->bcd) >> 16) & 0xF);
         vbdHex(3, (int(top->bcd) >> 8) & 0xF);
         vbdHex(2, (int(top->bcd) >> 4) & 0xF);
         vbdHex(1, int(top->bcd) & 0xF);
         
-        vbdCycle(i+1);
+        vbdCycle(i);
         // ---- end of Vbuddy output section
 
-        // change input stimuli
-        // top->rst = (i <2) | (i == 15); // reset signal is high if cycle number is <2 or is cycle 15
-        top->rst = i<2; // we need this line cuz if not rst is always 1
-        //top->en = (i>4);
+        top->rst = i<2; //Reset system so it can have a fresh start
     
         if (Verilated::gotFinish())  exit(0);
     }

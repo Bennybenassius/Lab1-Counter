@@ -29,8 +29,10 @@ int main(int argc, char **argv, char **env) {
             top->eval();
         }
 
+        //Rst is hardcoded to be delayed by 3 cycles so that it will reset at 0xF
         top->rst = (i<2) | (i==23);
         top->en = (i>4);
+        //Either a new variable is needed to re-enable en after 3 cycle, or we can hard-code it
         if (i >= 14 && i < 17) {
             top->en = 0;
         }

@@ -36,13 +36,6 @@ int main(int argc, char **argv, char **env) {
         }
 
         // ++++ Send count value to Vbuddy
-
-        // using hex display
-        // vbdHex(4, (int(top->count) >> 16) & 0xF);
-        // vbdHex(3, (int(top->count) >> 8) & 0xF);
-        // vbdHex(2, (int(top->count) >> 4) & 0xF);
-        // vbdHex(1, int(top->count) & 0xF);
-
         // using plot display (plots a line increasing)
         vbdPlot(int(top->count), 0, 255); // 255 sets the max number that the graph can display/show on the TFT display, change it to another number to see the difference 
         
